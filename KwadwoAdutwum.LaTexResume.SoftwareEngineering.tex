@@ -1,0 +1,302 @@
+%-------------------------------------
+% LaTeX Resume for Software Engineers
+% Resume Coded by  : Kwadwo Adutwum
+% Inspired by Original Author/creater : Leslie Cheng
+% License : MIT, Creative Commons License.
+%-------------------------------------
+
+\documentclass[letterpaper,12pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage[xetex]{hyperref}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[pdftex]{hyperref}
+\fi
+\usepackage{fontawesome}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Kwadwo Adutwum}
+\def \subtitle {Software Developer, Nuclear/Mechanical Engineer, Researcher}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://www.linkedin.com/in/kwadwoadutwum/}
+\def \linkedintext {/LinkedIn}
+
+\def \phoneicon {\faMobilePhone}
+\def \phonetext {Cell: +1-(410)-402-3731}
+
+\def \emailicon {\faEnvelope}
+\def \emaillink {mailto:ka2526@columbia.edu}
+\def \emailtext {ka2526@columbia.edu}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/uptimistic}
+\def \githubtext {/GitHub}
+
+\def \websiteicon {\faGlobe}
+\def \websitelink {https://account.ncees.org/rn/1744729-1038995-bb37253}
+\def \websitetext { Engineering Board FE Certification}
+
+
+\def \homeaddressicon {\faHome}
+\def \homeaddresstext {Valley Creek Apt, Woodbury,MN 55125}
+
+\def \headertype {\singlecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-0pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{0D47A1}
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+%------------------------------------------------------------------------------------------------------------------- 
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+\def \homeaddress {\homeaddressicon \hspace{3pt}{ \homeaddresstext}}
+\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.1in}
+
+% Define the link colours
+\hypersetup{
+    colorlinks=true,
+    urlcolor=links,
+}
+
+% Set the margin alignment 
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0.05in}
+
+%-------------------------
+% Custom commands
+
+% Sections
+\renewcommand{\section}[2]{\vspace{5pt}
+  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+      \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+  \item[]\small{
+    \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+  }
+}
+
+% Double column header
+\newcommand{\doublecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#4} & {\small#1} \\
+        {\small#5} & {\small#2} \\
+        {\small#6} & {\small#3}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\homeaddress}{\website}{\email}{\phone}{\linkedin}{\github}{} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\section{\faUniversity}{Education}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Columbia University School of Engineering}{August 2014 -- May 2016}
+      {Master of Science Degree, Mechanical Engineering}
+      {New York City, New York, USA}
+      
+    \resumeEntryTSDL
+    { University of Wisconsin}{Spring 2014 }
+    { Senior Capstone Design Dual Enrolment}
+    {Madison, Wisconsin, USA}
+
+    \resumeEntryTSDL
+    { South Carolina State University}{2010--2014 }
+    {Bachelor of Science Degree, Nuclear Engineering}
+    {Orangeburg, South Carolina, USA}
+ 
+    
+
+    
+      \resumeEntryEnd
+
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\section{\faPieChart}{Relevant Experience}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Xcel Energy / Dominion Energy }{October 2016 -- July 2020}
+      {Nuclear Design Engineer }{Minneapolis,MN \& Richmond,VA USA}
+    \resumeItemListStart
+      \resumeItem {Developed fuel design simulate models using front-end and back-end industry-grade software}
+      \resumeItem {Implemented and streamlined fuel design core-follow tracking database integration }
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+  \resumeEntryTSDL
+    {Columbia University Engineering Research Lab }{August 2014 -- February 2016}
+    {Graduate Reserach and Teaching Assistant }{New York City, New York, USA}
+  \resumeItemListStart
+    \resumeItem {Developed and implemented MATLAB Machine Learning Algorithm for spectral analysis}
+    \resumeItem {Served as graduate teaching assistant for over 70 undergraduate engineering students}
+    \resumeItemListEnd
+\resumeEntryEnd
+\resumeEntryStart
+  \resumeEntryTSDL
+    {University of Wisconsin  }{January 2014 -- May 2014}
+    {Senior Capstone Designer }{Madison, Wisconsin, USA}
+  \resumeItemListStart
+    \resumeItem {Developed entire hot cell containment in  Monte-Carlo code for  Solid Works 3-D model rendition }
+    \resumeItemListEnd
+\resumeEntryEnd
+
+\resumeEntryStart
+  \resumeEntryTSDL
+    {South Carolina State Univ. Math \& Comp. Sci. Dept}{January 2011 -- December 2013}
+    {Calculus and Engineering Mathematics Tutor }{Orangeburg, South Carolina, USA}
+  \resumeItemListStart
+    \resumeItem {Taught Engineering Mathematics and Calculus for 3 years to over 50 students}
+    \resumeItem {Engaged students in applying algorithmic problem-solving approach to Maths and Calculus }
+    \resumeItemListEnd
+\resumeEntryEnd
+
+
+
+%-------------------------------------------------- PROJECTS --------------------------------------------------
+\section{\faFlask}{Key Software Engineering Projects in Progress}
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {1. Nand2Tetris  (Harware-Software Integration) - 6 months }{}
+    \resumeItemListStart
+      \resumeItem {Integrated hardware-software computer architecture capturing elements of computing systems}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {2. The ODIN Project (Full-Stack Software Development) - 3 months}{}
+    \resumeItemListStart
+      \resumeItem {Full-stack of technologies applied to responsive front-end and back-end development with databases }
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart 
+    \resumeEntryTD
+      {3. Designing Data-Intensive Applications - 6 months}{}
+    \resumeItemListStart
+      \resumeItem {Distributed Systems project based on design of data-intensive applications by Martin Kleppmann }
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+
+
+%-------------------------------------------------- TECHNICAL AND SOFT SKILLS --------------------------------------------------
+
+\section{\faGears}{ Techincal \& Soft Skills}
+ \resumeEntryStart
+  \resumeEntryS{Computer Programming : } {Professional level fluency/proficiency in Python, Java, JavaScript, HTML \& CSS}
+  \resumeEntryS{Hobbies \& Interests :} {Soccer, Biking, Educational Outreach \& Scholarship Mentoring, Teaching Programming }
+  \resumeEntryS{Leadership, Awards \& Recognition :} {Vice President of NSBE Campus Engineering Society, Presidential Scholar,     Dean’s Award for Excellence, American Nuclear Society Honors Recognition, Mayor Appointed Commisioner    }
+  \resumeEntryS{Muti-Lingual \& International Travel :} {Languages:(English , Italian , Ghanaian); Travel:(UK, Poland, USA, Africa)}
+
+  \resumeEntryEnd
+
+
+
+\end{document}
